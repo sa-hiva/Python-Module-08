@@ -1,3 +1,4 @@
+import sys
 import importlib
 from importlib import metadata
 
@@ -6,6 +7,7 @@ DEPENDENCIES: list[tuple[str, str]] = [
     ("numpy", "Numerical computation ready"),
     ("matplotlib", "Visualization ready")
 ]
+
 
 def valid_dependencies() -> bool:
     print("Checking dependencies:")
@@ -19,6 +21,7 @@ def valid_dependencies() -> bool:
             print(f"[MISSING] {name} - Not installed")
             all_valid = False
     return all_valid
+
 
 def print_instructions() -> None:
     print("")
@@ -35,8 +38,8 @@ def analyze_data() -> None:
     import numpy as np
     import matplotlib.pyplot as plt
     days = np.arange(365 * 25)
-    dates = pd.date_range("2000-01-01",periods=len(days))
-    
+    dates = pd.date_range("2000-01-01", periods=len(days))
+
     base_temperature = 15
     season = np.sin((2 * np.pi * days / 365) - np.pi / 2)
     season_amplitude = 10
@@ -49,8 +52,9 @@ def analyze_data() -> None:
         })
     df["year"] = df["date"].dt.year
     yearly = df.groupby("year")["temperature"].mean()
+    print()
     print("Analyzing meteorological data of the last 25 years...")
-    print(f"Processing {len(df)} data points...")   
+    print(f"Processing {len(df)} data points...")
     print()
     print(f"Average temperature: {df['temperature'].mean():.2f} ºC")
     print(f"Maximum temperature: {df['temperature'].max():.2f} ºC")
@@ -65,10 +69,9 @@ def analyze_data() -> None:
     plt.ylabel("Temperature (°C)")
     plt.grid(True)
     plt.tight_layout()
-    plt.savefig("matrix_analysis.png")
+    plt.savefig("weather_analysis.png")
     print("\nAnalysis complete!")
     print("Results saved to: matrix_analysis.png")
-
 
 
 if __name__ == "__main__":
@@ -77,5 +80,5 @@ if __name__ == "__main__":
     print()
     if not valid_dependencies():
         print_instructions()
-    else:
-        analyze_data()
+        sys.exit(1)
+    analyze_data()
