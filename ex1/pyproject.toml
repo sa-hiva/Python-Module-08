@@ -1,17 +1,18 @@
-[build-system]
-requires = ["setuptools>=61.0"]
-build-backend = "setuptools.build_meta"
-
 [project]
 name = "loading"
 version = "1.0.0"
-description = "An exercise from python module 08 at 42"
-readme = "README.md"
-requires-python = ">=3.10"
-license-files = ["LICENSE.md"]
+description = "Exercise 1 from Python Module 08 at 42"
 authors = [
     { name = "shierro", email = "shierro@student.42urduliz.com" }
 ]
+requires-python = ">=3.10"
 
-[tool.setuptools.packages.find]
-include = ["loa"]
+dependencies = [
+    "numpy>=2.2.6,<3.0.0",
+    "pandas>=2.3.3,<3.0.0",
+    "matplotlib>=3.10.1,<4.0.0",
+]
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
