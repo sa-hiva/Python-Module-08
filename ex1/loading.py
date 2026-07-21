@@ -71,7 +71,7 @@ def analyze_data() -> None:
     plt.tight_layout()
     plt.savefig("weather_analysis.png")
     print("\nAnalysis complete!")
-    print("Results saved to: matrix_analysis.png")
+    print("Results saved to: weather_analysis.png")
 
 
 if __name__ == "__main__":
