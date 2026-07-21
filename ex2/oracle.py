@@ -78,6 +78,8 @@ def print_instructions() -> None:
     print()
     print("To install it use:")
     print("  pip install python-dotenv")
+    print("  or")
+    print("  pip install -r requirements.txt")
     print()
 
 
