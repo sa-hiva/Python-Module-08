@@ -58,7 +58,9 @@ def print_configuration(config: dict[str, str]) -> None:
 
 def security_check(config: dict[str, str]) -> None:
     print("Environment security check:")
-    if os.path.exists(".env"):
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    env_path = os.path.join(script_dir, ".env")
+    if os.path.exists(env_path):
         print("[OK] Environment configuration file detected")
     else:
         print("[WARNING] .env file not found")
